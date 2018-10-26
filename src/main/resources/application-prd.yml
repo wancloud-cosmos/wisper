@@ -1,0 +1,61 @@
+# Configure development environment
+
+server:
+  port: 80
+
+# Spring configuration
+spring:
+  datasource:
+    initialize: true
+    name: wisper
+    host: localhost
+    port: 3306
+    url: jdbc:mysql://localhost:3306/wisper?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: ${MYSQL_USERNAME:wancloud}
+    password: ${MYSQL_PASSWORD}
+    type: org.apache.commons.dbcp.BasicDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    connection-timeout: 3000
+    max-active: 200
+    max-idle: 20
+    min-idle: 10
+    max-wait: 3000
+    test-on-borrow: true
+    validation-query: SELECT 1 FROM DUAL
+    initial-size: 10
+  mail:
+    host: smtp.ym.163.com
+    username: jira@wancloud.io
+    password: 6IZKdnF3rg
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+# Wisper
+wisper:
+  task:
+    enabled: ${QTUM_TASK_ENABLED:true}
+    cron: ${QTUM_TASK_CRON:0 0 10 * * ?}
+  rpc:
+    url: http://${QTUM_RPC_IP:10.10.10.20}:3889
+    user: ${QTUM_RPC_USER:test}
+    password: ${QTUM_RPC_PASSWORD:test1234}
+  mail:
+    from: jira@wancloud.io
+    targets: ${QTUM_MAIL_TARGETS}
+  encryption.seed: ${QTUM_MAIL_ENCRYPTION_SEED:b0fc3b7d051y6h5x}
+
+# Logging configuration
+logging:
+  level:
+    root: INFO
+    org.springframework:
+      data: ERROR
+      web: ERROR
+    io.wancloud: ERROR
+    jdbc.core.JdbcTemplate: ERROR
+  file: logs/wisper.log

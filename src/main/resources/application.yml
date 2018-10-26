@@ -1,0 +1,2 @@
+# Configure active profile
+spring.profiles.active: @env@

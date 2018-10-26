@@ -1,0 +1,60 @@
+# Configure development environment
+# Set max-age to -1 for session cookie.
+server:
+  port: 80
+
+# Spring configuration
+spring:
+  datasource:
+    name: wisper
+    host: localhost
+    port: 3306
+    url: jdbc:mysql://localhost:3306/wisper?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    type: org.apache.commons.dbcp.BasicDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    connection-timeout: 3000
+    max-active: 200
+    max-idle: 20
+    min-idle: 10
+    max-wait: 3000
+    test-on-borrow: true
+    validation-query: SELECT 1 FROM DUAL
+    initial-size: 10
+  mail:
+    host: smtp.ym.163.com
+    username: jira@wancloud.io
+    password: 6IZKdnF3rg
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+# Wisper
+wisper:
+  task:
+    enabled: true
+    cron: 0 0/1 * * * ?
+  rpc:
+    url: http://192.168.1.224:13889
+    user: test
+    password: test1234
+  mail:
+    from: jira@wancloud.io
+    targets: fuxiaobo@wancloud.io
+  encryption.seed: b0fc3b7d051y6h5x
+
+# Logging configuration
+logging:
+  level:
+    root: INFO
+    org.springframework:
+      data: INFO
+      web: INFO
+    io.wancloud: INFO
+    jdbc.core.JdbcTemplate: INFO
+  file: logs/wisper.log
