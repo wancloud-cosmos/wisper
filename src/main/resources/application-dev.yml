@@ -10,8 +10,8 @@ spring:
     host: localhost
     port: 3306
     url: jdbc:mysql://localhost:3306/wisper?useUnicode=true&characterEncoding=utf-8&useSSL=false
-    username: root
-    password: root
+    username: wisper
+    password: wisper
     type: org.apache.commons.dbcp.BasicDataSource
     driver-class-name: com.mysql.jdbc.Driver
     connection-timeout: 3000
@@ -24,8 +24,8 @@ spring:
     initial-size: 10
   mail:
     host: smtp.ym.163.com
-    username: jira@wancloud.io
-    password: 6IZKdnF3rg
+    name: jira@wancloud.io
+    pwd: NklaS2RuRjNyZw==
     properties:
       mail:
         smtp:
@@ -37,16 +37,10 @@ spring:
 # Wisper
 wisper:
   task:
-    enabled: true
     cron: 0 0/1 * * * ?
-  rpc:
-    url: http://192.168.1.224:13889
-    user: test
-    password: test1234
   mail:
     from: jira@wancloud.io
-    targets: fuxiaobo@wancloud.io
-  encryption.seed: b0fc3b7d051y6h5x
+    targets: apoz.foo@gmail.com
 
 # Logging configuration
 logging:

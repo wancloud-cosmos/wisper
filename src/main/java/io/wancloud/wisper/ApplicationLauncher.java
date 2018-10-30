@@ -1,5 +1,7 @@
 package io.wancloud.wisper;
 
+import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
+import com.sun.org.apache.xml.internal.security.utils.Base64;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,10 +27,10 @@ public class ApplicationLauncher extends SpringBootServletInitializer {
     @Value("${spring.mail.host}")
     private String host;
 
-    @Value("${spring.mail.username}")
+    @Value("${spring.mail.name}")
     private String username;
 
-    @Value("${spring.mail.password}")
+    @Value("${spring.mail.pwd}")
     private String password;
 
     @Bean
@@ -37,11 +39,15 @@ public class ApplicationLauncher extends SpringBootServletInitializer {
     }
 
     @Bean
-    public JavaMailSender mailSender() {
+    public JavaMailSender mailSender() throws InterruptedException {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost(host);
         mailSender.setUsername(username);
-        mailSender.setPassword(password);
+        try {
+            mailSender.setPassword(new String(Base64.decode(password)));
+        } catch (Base64DecodingException e) {
+            throw new InterruptedException("Illegal mail sender's password");
+        }
         return mailSender;
     }
 

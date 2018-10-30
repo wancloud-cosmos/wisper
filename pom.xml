@@ -147,10 +147,10 @@
 			<id>dev</id>
 			<properties>
 				<env>dev</env>
-				<MYSQL_HOST>120.132.2.210</MYSQL_HOST>
+				<MYSQL_HOST>172.20.0.35</MYSQL_HOST>
 				<MYSQL_PORT>3306</MYSQL_PORT>
-				<MYSQL_USERNAME>wancloud</MYSQL_USERNAME>
-				<MYSQL_PASSWORD>wancloud</MYSQL_PASSWORD>
+				<MYSQL_USERNAME>wisper</MYSQL_USERNAME>
+				<MYSQL_PASSWORD>wisper</MYSQL_PASSWORD>
 				<MYSQL_SCHEMA>wancloud</MYSQL_SCHEMA>
 			</properties>
 			<activation>
@@ -161,10 +161,10 @@
 			<id>test</id>
 			<properties>
 				<env>test</env>
-				<MYSQL_HOST>120.132.2.210</MYSQL_HOST>
+				<MYSQL_HOST>172.20.0.35</MYSQL_HOST>
 				<MYSQL_PORT>3306</MYSQL_PORT>
-				<MYSQL_USERNAME>wancloud</MYSQL_USERNAME>
-				<MYSQL_PASSWORD>wancloud</MYSQL_PASSWORD>
+				<MYSQL_USERNAME>wisper</MYSQL_USERNAME>
+				<MYSQL_PASSWORD>wisper</MYSQL_PASSWORD>
 				<MYSQL_SCHEMA>wancloud</MYSQL_SCHEMA>
 			</properties>
 		</profile>

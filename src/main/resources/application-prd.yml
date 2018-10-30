@@ -11,8 +11,8 @@ spring:
     host: localhost
     port: 3306
     url: jdbc:mysql://localhost:3306/wisper?useUnicode=true&characterEncoding=utf-8&useSSL=false
-    username: ${MYSQL_USERNAME:wancloud}
-    password: ${MYSQL_PASSWORD}
+    username: ${MYSQL_USERNAME:wisper}
+    password: ${MYSQL_PASSWORD:wisper}
     type: org.apache.commons.dbcp.BasicDataSource
     driver-class-name: com.mysql.jdbc.Driver
     connection-timeout: 3000
@@ -25,8 +25,8 @@ spring:
     initial-size: 10
   mail:
     host: smtp.ym.163.com
-    username: jira@wancloud.io
-    password: 6IZKdnF3rg
+    name: jira@wancloud.io
+    pwd: NklaS2RuRjNyZw==
     properties:
       mail:
         smtp:
@@ -38,16 +38,10 @@ spring:
 # Wisper
 wisper:
   task:
-    enabled: ${QTUM_TASK_ENABLED:true}
-    cron: ${QTUM_TASK_CRON:0 0 10 * * ?}
-  rpc:
-    url: http://${QTUM_RPC_IP:10.10.10.20}:3889
-    user: ${QTUM_RPC_USER:test}
-    password: ${QTUM_RPC_PASSWORD:test1234}
+    cron: ${TASK_CRON:0 0 10 * * ?}
   mail:
     from: jira@wancloud.io
-    targets: ${QTUM_MAIL_TARGETS}
-  encryption.seed: ${QTUM_MAIL_ENCRYPTION_SEED:b0fc3b7d051y6h5x}
+    targets: ${MAIL_TARGETS}
 
 # Logging configuration
 logging:
